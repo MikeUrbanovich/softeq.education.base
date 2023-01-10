@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 using MediatR;
-using TrialsSystem.UsersService.Api.Application.Commands;
-using TrialsSystem.UsersService.Api.Application.Queries;
+using TrialsSystem.UsersService.Api.Application.Commands.User;
+using TrialsSystem.UsersService.Api.Application.Queries.User;
 using TrialsSystem.UsersService.Api.Filters;
 
 namespace TrialsSystem.UsersService.Api.Controllers.v1
@@ -52,7 +52,8 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
             [FromRoute] string userId,
             [FromRoute] string id)
         {
-            return Ok();
+            var response = await _mediator.Send(new UserQuery(id));
+            return Ok(response);
         }
 
 
@@ -70,7 +71,6 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
                                                                              request.Height,
                                                                              request.GenderId));
             return Ok(response);
-
         }
 
         [HttpPut("{id}")]
@@ -78,15 +78,25 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutAsync(string id, UpdateUserRequest request)
         {
-            return Ok();
+            var response = await _mediator.Send(new UpdateUserCommand(
+                id,
+                request.Name,
+                request.Surname,
+                request.CityId,
+                request.BirthDate,
+                request.Weight,
+                request.Height));
+
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> DeleteAsync(string Id)
+        public async Task<IActionResult> DeleteAsync(string id)
         {
-            return Ok();
+            var response = await _mediator.Send(new DeleteUserCommand(id));
+            return Ok(response);
         }
     }
 }

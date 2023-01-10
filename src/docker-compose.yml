@@ -28,3 +28,12 @@ services:
       dockerfile: UsersManagement/TrialsSystem.UsersService/Dockerfile
     depends_on:
       - mongo
+
+  um.userTask.service:
+    image: um.userTask.service
+    container_name: um.userTask.service
+    build:
+      context: .
+      dockerfile: UsersManagement/TrialsSystem.UserTaskService/Dockerfile
+    depends_on:
+      - mongo

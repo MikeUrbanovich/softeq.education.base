@@ -32,6 +32,10 @@ namespace TrialsSystem.UsersService.Api
                     new OpenApiInfo { Title = "TrialsSystem.UsersService", Version = "v1" }
 
                     );
+                //c.SwaggerDoc("v2",
+                //   new OpenApiInfo { Title = "TrialsSystem.UsersService", Version = "v2" }
+
+                //   );
                 var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });

@@ -1,8 +1,7 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using MediatR;
+﻿using MediatR;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
-namespace TrialsSystem.UsersService.Api.Application.Commands
+namespace TrialsSystem.UsersService.Api.Application.Commands.User
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, CreateUserResponse>
     {

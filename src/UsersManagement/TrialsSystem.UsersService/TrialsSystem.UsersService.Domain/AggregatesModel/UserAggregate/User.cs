@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using TrialsSystem.UsersService.Domain.AggregatesModel.Base;
 
 namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
@@ -16,7 +11,7 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
             Name = name;
             Surname = surname;
             CityId = cityd;
-            BirthDate = BirthDate;
+            BirthDate = birthDate;
             GenderId = genderId;
         }
 
