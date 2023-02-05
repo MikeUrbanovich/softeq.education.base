@@ -3,9 +3,23 @@ using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
 namespace TrialsSystem.UsersService.Api.Application.Commands.User
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UpdateUserCommand : IRequest<UpdateUserResponse>
     {
-        public UpdateUserCommand(string id,
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="surname"></param>
+        /// <param name="cityId"></param>
+        /// <param name="birthDate"></param>
+        /// <param name="weight"></param>
+        /// <param name="height"></param>
+        public UpdateUserCommand(
+            string id,
             string name,
             string surname,
             string cityId,
@@ -22,19 +36,39 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.User
             Height = height;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Id { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Surname { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string CityId { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime BirthDate { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public decimal? Weight { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public decimal? Height { get; }
-
     }
 }

@@ -1,6 +1,18 @@
-﻿namespace TrialsSystem.UsersService.Api.Filters
+﻿using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace TrialsSystem.UsersService.Api.Filters
 {
-    public class DeviceExceptionFilter
+    /// <summary>
+    /// 
+    /// </summary>
+    public class DeviceExceptionFilter : IExceptionFilter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnException(ExceptionContext context)
+        {
+        }
     }
 }

@@ -6,7 +6,7 @@
 
         public string Model { get; set; }
 
-        public string TypeId { get; set; }
+        public Guid TypeId { get; set; }
 
         public string FirmwareVersion { get; set; }
     }

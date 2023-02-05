@@ -3,11 +3,20 @@ using TrialsSystem.UsersService.Infrastructure.Models.DeviceDTOs;
 
 namespace TrialsSystem.UsersService.Api.Application.Commands.Device
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DeleteDeviceCommandHandler : IRequestHandler<DeleteDeviceCommand, DeleteDeviceResponse>
     {
-        public async Task<DeleteDeviceResponse> Handle(DeleteDeviceCommand request, CancellationToken cancellationToken)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<DeleteDeviceResponse> Handle(DeleteDeviceCommand request, CancellationToken cancellationToken)
         {
-            return new DeleteDeviceResponse();
+            return Task.FromResult(new DeleteDeviceResponse());
         }
     }
 }

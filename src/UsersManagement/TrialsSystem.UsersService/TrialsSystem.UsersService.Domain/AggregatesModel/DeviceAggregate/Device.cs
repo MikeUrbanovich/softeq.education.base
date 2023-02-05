@@ -4,21 +4,22 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.DeviceAggregate
 {
     public class Device
     {
-        public Device(string serialNumber, string model, string typeId, string firmwareVersion)
+        public Device(Guid id, string serialNumber, string model, Guid typeId, string firmwareVersion)
         {
+            Id = id;
             SerialNumber = serialNumber;
             Model = model;
             TypeId = typeId;
             FirmwareVersion = firmwareVersion;
         }
 
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         public string SerialNumber { get; set; }
 
         public string Model { get; set; }
 
-        private string TypeId { get; set; }
+        private Guid TypeId { get; set; }
 
         [ForeignKey("TypeId")]
         public DeviceType Type { get; set; }

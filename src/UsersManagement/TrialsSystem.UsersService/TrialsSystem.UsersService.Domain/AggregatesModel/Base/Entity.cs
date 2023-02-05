@@ -1,12 +1,15 @@
-﻿namespace TrialsSystem.UsersService.Domain.AggregatesModel.Base
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TrialsSystem.UsersService.Domain.AggregatesModel.Base
 {
     public class Entity
     {
-        public string Id { get; protected set; }
+        [Key]
+        public Guid Id { get; protected set; }
+
         public bool IsDeleted { get; protected set; }
 
         public DateTime CreatedDate { get; protected set; }
         public DateTime LastModifiedDate { get; protected set; }
-
     }
 }

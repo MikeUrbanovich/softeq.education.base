@@ -17,6 +17,10 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
     {
         private readonly IMediator _mediator;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mediator"></param>
         public UsersController(IMediator mediator)
         {
             _mediator = mediator;
@@ -34,7 +38,6 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         [ProducesResponseType(typeof(IEnumerable<GetUsersResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
         public async Task<IActionResult> GetAsync(
             [FromRoute] string userId,
             [FromQuery] int? skip = 0,
@@ -42,9 +45,19 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
             [FromQuery] string? email = null)
         {
             var response = await _mediator.Send(new UsersQuery(take, skip, email));
+
+            if (!response.Any())
+                return NotFound("Users not found.");
+
             return Ok(response);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(GetUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -57,22 +70,34 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostAsync(CreateUserRequest request)
         {
             var response = await _mediator.Send(new CreateUserCommand(request.Email,
-                                                                             request.Name,
-                                                                             request.Surname,
-                                                                             request.CityId,
-                                                                             request.BirthDate,
-                                                                             request.Weight,
-                                                                             request.Height,
-                                                                             request.GenderId));
+                request.Name,
+                request.Surname,
+                request.CityId,
+                request.BirthDate,
+                request.Weight,
+                request.Height,
+                request.GenderId));
+
             return Ok(response);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(UpdateUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -90,6 +115,11 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
             return Ok(response);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

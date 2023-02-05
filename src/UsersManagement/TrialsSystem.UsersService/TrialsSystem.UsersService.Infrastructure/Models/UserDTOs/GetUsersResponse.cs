@@ -15,6 +15,5 @@
         public decimal? Height { get; set; }
         public string CityName { get; set; }
         public string GenderName { get; set; }
-
     }
 }

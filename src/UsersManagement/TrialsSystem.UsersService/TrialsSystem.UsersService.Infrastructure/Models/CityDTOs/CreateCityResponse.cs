@@ -2,6 +2,6 @@
 {
     public class CreateCityResponse : CreateCityRequest
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

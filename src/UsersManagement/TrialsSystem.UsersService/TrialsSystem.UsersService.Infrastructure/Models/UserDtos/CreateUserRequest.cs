@@ -1,4 +1,6 @@
-﻿namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
+﻿using AutoMapper.Configuration.Annotations;
+
+namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
 {
     public class CreateUserRequest
     {
@@ -14,9 +16,10 @@
 
         public decimal? Height { get; set; }
 
-        public string CityId { get; set; }
+        [Ignore]
+        public Guid CityId { get; set; }
 
-        public string GenderId { get; set; }
-
+        [Ignore]
+        public Guid GenderId { get; set; }
     }
 }

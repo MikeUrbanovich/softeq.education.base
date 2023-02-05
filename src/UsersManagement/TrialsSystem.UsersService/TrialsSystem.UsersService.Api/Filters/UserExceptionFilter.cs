@@ -4,15 +4,26 @@ using TrialsSystem.UsersService.Api.Exceptions;
 
 namespace TrialsSystem.UsersService.Api.Filters
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class UserExceptionFilter : IExceptionFilter
     {
         private readonly ILogger<UserExceptionFilter> _logger;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
         public UserExceptionFilter(ILogger<UserExceptionFilter> logger)
         {
             _logger = logger;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public void OnException(ExceptionContext context)
         {
             if (context.ExceptionHandled) return;
@@ -24,7 +35,8 @@ namespace TrialsSystem.UsersService.Api.Filters
                     SetContextResult(context, new BadRequestResult());
                     break;
                 default:
-                    _logger.LogCritical("System error occurred. Message: {message}. Inner exception: {innerException}. Stack trace: {stackTrace}",
+                    _logger.LogCritical(
+                        "System error occurred. Message: {message}. Inner exception: {innerException}. Stack trace: {stackTrace}",
                         context.Exception.Message,
                         context.Exception.InnerException?.Message,
                         context.Exception.StackTrace);
